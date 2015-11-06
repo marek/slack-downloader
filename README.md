@@ -1,7 +1,7 @@
 # fslack.py
 
 fslack.py is tool to download and delete files off of Slack.
-This is in response to <a href="https://www.ibuildings.nl/blog/2015/11/hidden-plain-sight-brute-forcing-slack-private-files">security problem</a>
+This is in response to this <a href="https://www.ibuildings.nl/blog/2015/11/hidden-plain-sight-brute-forcing-slack-private-files">security problem</a>
 
 ### Requirements
 
@@ -23,6 +23,6 @@ get an api token from https://api.slack.com/web
 fslack.py --download --all --out foo <token>
 ```
 
-** Note: output folder must exit prior to calling the command
+** Note: output folder must exist prior to calling the command
 
 
