@@ -1,6 +1,6 @@
 # slack-downloader
 
-`slack-downloader` is a tool to download/backup Slack files on a local disk.
+`slack-downloader` is a tool to download/backup [Slack](https://slack.com) files on a local disk.
 
 The program will download latest files uploaded on Slack, on a configured directory.
 History of already downloaded files is mantained, in order to avoid duplicate downloads.
