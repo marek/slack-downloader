@@ -26,7 +26,6 @@ This project is a fork of [marek/fslack](https://github.com/marek/fslack), used 
 1. Download the Python program:
 
    ```
-   sh
    wget https://raw.githubusercontent.com/auino/slack-downloader/master/slack-downloader.py
    chmod +x slack-downloader.py
    ```
