@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+# 
+# slack-downloader
+# Author: Enrico Cambiaso
+# Email: enrico.cambiaso[at]gmail.com
+# GitHub project URL: https://github.com/auino/slack-downloader
+# 
+
 import requests
 import json
 import argparse
@@ -10,7 +18,9 @@ import time
 from datetime import datetime, timedelta
 from pprint import pprint # for debugging purposes
 
-### CONFIGURATION START ###
+# --- --- --- --- ---
+# CONFIGURATION BEGIN
+# --- --- --- --- ---
 
 # API Token: see https://api.slack.com/web
 TOKEN = "<your_token>"
@@ -21,7 +31,9 @@ OUTPUTDIR = "output"
 # enable debug?
 DEBUG = False
 
-### CONFIGURATION END ###
+# --- --- --- --- ---
+#  CONFIGURATION END
+# --- --- --- --- ---
 
 # constants
 
