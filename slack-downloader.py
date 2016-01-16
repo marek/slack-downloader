@@ -31,6 +31,15 @@ TIMESTAMPFILE = os.path.dirname(os.path.realpath(__file__))+"/offset.txt"
 
 def response_to_json(response): return response.json
 
+# file renaming function
+def get_local_filename(basedir, date, filename, user):
+	# converting date from epoch time to readable format
+	date = time.strftime('%Y%m%d_%H%M%S', time.localtime(float(date)))
+	# splitting filename to file extension
+	filename, file_extension = os.path.splitext(filename)
+	# retrieving full filename with path and returning it
+	return basedir+'/'+str(date)+'-'+filename+'_by_'+user+file_extension
+
 def set_timestamp(ts):
 	try:
 		out_file = open(TIMESTAMPFILE,"w")
@@ -57,11 +66,7 @@ def download_file(url, basedir, filename, date, user, channel):
 		os.stat(basedir)
 	except:
 		os.mkdir(basedir)
-	# converting date from epoch time to readable format
-	date = time.strftime('%Y%m%d_%H%M%S', time.localtime(float(date)))
-	filename, file_extension = os.path.splitext(filename)
-	# retrieving full filename with path
-	local_filename = basedir+'/'+str(date)+'-'+filename+'_by_'+user+file_extension
+	local_filename = get_local_filename(basedir, str(date), filename, user)
 	print "Saving to", local_filename
 	headers = {'Authorization': 'Bearer '+TOKEN}
 	r = requests.get(url, headers=headers)
