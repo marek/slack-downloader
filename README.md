@@ -5,6 +5,14 @@
 The program will download latest files uploaded on Slack, on a configured directory.
 History of already downloaded files is mantained, in order to avoid duplicate downloads.
 
+Files will be organized inside of a specified directory, with the following form:
+
+```
+<channel_name>/<date>-<filename>_by_<user/uploader>.<ext>
+```
+
+where `<date>` has the form `%Y%m%d_%H%M%S`.
+
 This project is a fork of [marek/fslack](https://github.com/marek/fslack), used for a different purpose.
 
 ### Requirements
