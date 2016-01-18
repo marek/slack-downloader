@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-#
+# 
 # slack-downloader
 # Author: Enrico Cambiaso
 # Email: enrico.cambiaso[at]gmail.com
