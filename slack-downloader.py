@@ -39,6 +39,7 @@ DEBUG = False
 
 API = 'https://slack.com/api'
 
+# useful to avoid duplicate downloads
 TIMESTAMPFILE = os.path.dirname(os.path.realpath(__file__))+"/offset.txt"
 
 def response_to_json(response): return response.json
@@ -52,6 +53,7 @@ def get_local_filename(basedir, date, filename, user):
 	# retrieving full filename with path and returning it
 	return basedir+'/'+str(date)+'-'+filename+'_by_'+user+file_extension
 
+# save the timestamp of the last download (+1), in order to avoid duplicate downloads
 def set_timestamp(ts):
 	try:
 		out_file = open(TIMESTAMPFILE,"w")
@@ -62,6 +64,7 @@ def set_timestamp(ts):
 		if DEBUG: print str(e)
 		return False
 
+# get saved timestamp of last download
 def get_timestamp():
 	try:
 		in_file = open(TIMESTAMPFILE,"r")
@@ -72,6 +75,7 @@ def get_timestamp():
 		if DEBUG: print str(e)
 		return None
 
+# download a file to a specific location
 def download_file(url, basedir, filename, date, user, channel):
 	basedir += channel
 	try:
@@ -87,6 +91,7 @@ def download_file(url, basedir, filename, date, user, channel):
 			if chunk: f.write(chunk)
 	return local_filename
 
+# get channel name from identifier
 def get_channel_name(id):
 	url = API+'/channels.info'
 	data = {'token': TOKEN, 'channel': id }
@@ -94,6 +99,7 @@ def get_channel_name(id):
 	if DEBUG: pprint(response_to_json(response))
 	return response_to_json(response)['channel']['name']
 
+# get user name from identifier
 def get_user_name(id):
 	url = API+'/users.info'
 	data = {'token': TOKEN, 'user': id }
@@ -101,6 +107,7 @@ def get_user_name(id):
 	if DEBUG: pprint(response_to_json(response))
 	return response_to_json(response)['user']['name']
 
+# request files
 def make_requester():
 	list_url = API+'/files.list'
 
@@ -117,6 +124,7 @@ def make_requester():
 
 	return all_requester
 
+# main function
 if __name__ == '__main__':
 	# creating main output directory, if needed
 	try:
