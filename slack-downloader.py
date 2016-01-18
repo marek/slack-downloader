@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-# 
+#
 # slack-downloader
 # Author: Enrico Cambiaso
-# Email: enrico.cambiaso[at]gmail.com
-# GitHub project URL: https://github.com/auino/slack-downloader
+# Email: enrico.cambiaso[at]gmail.com
+# GitHub project URL: https://github.com/auino/slack-downloader
 # 
 
 import requests
