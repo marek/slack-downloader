@@ -135,7 +135,7 @@ def make_requester():
 
 # main function
 if __name__ == '__main__':
-	# retrieving absolute output directory
+	# retrieving absolute output directory
 	OUTPUTDIR = MAINDIR+OUTPUTDIR
 	# creating main output directory, if needed
 	try:
