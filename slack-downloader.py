@@ -50,7 +50,13 @@ MAINDIR = os.path.dirname(os.path.realpath(__file__))+'/'
 TIMESTAMPFILE = MAINDIR+"offset.txt"
 
 # format a response in json format
-def response_to_json(response): return response.json
+def response_to_json(response):
+	try:
+		res = response.json
+		foo = res['ok']
+		return res
+	except: # different version of python-requests
+		return response.json()
 
 # file renaming function
 def get_local_filename(basedir, date, filename, user):
