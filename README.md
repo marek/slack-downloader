@@ -30,7 +30,7 @@ This project is a fork of [marek/fslack](https://github.com/marek/fslack), used 
    chmod +x slack-downloader.py
    ```
 
-2. Open the `slack-downloader.py` script with a text editor and configure it accordingly to your needs
+2. Open the `slack-downloader.py` script with a text editor and configure it using a [legacy token](https://api.slack.com/custom-integrations/legacy-tokens)
 3. Optionally, you can add the program to your `crontab` to automatically check for new shared items on Slack:
 
    ```

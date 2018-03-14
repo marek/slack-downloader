@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 # 
 # slack-downloader
@@ -22,7 +22,7 @@ from pprint import pprint # for debugging purposes
 # CONFIGURATION BEGIN
 # --- --- --- --- ---
 
-# API Token: see https://api.slack.com/web
+# API Token: see https://api.slack.com/custom-integrations/legacy-tokens
 TOKEN = "<your_token>"
 
 # output main directory, without slashes
