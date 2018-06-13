@@ -25,6 +25,10 @@ from pprint import pprint # for debugging purposes
 # API Token: see https://api.slack.com/custom-integrations/legacy-tokens
 TOKEN = "<your_token>"
 
+# Set Token from environment variable SLACK_TOKEN (if it exists)
+if 'SLACK_TOKEN' in os.environ:
+	TOKEN = os.environ['SLACK_TOKEN']
+
 # output main directory, without slashes
 OUTPUTDIR = "data"
 
