@@ -165,10 +165,10 @@ if __name__ == '__main__':
 		for f in json["files"]:
 			try:
 				if DEBUG and EXTREME_DEBUG: pprint(f) # extreme debug
-				filename = str(f['name'])
+				filename = f['name']
 				date = str(f['timestamp'])
 				user = users.get(f['user'], get_user_name(f['user']))
-				channel = get_channel_name(f['channels'][0])
+					channel = get_channel_name(f['channels'][0])
 				file_url = f["url_private_download"]
 				basedir = OUTPUTDIR+'/'+channel
 				local_filename = get_local_filename(basedir, date, filename, user)
