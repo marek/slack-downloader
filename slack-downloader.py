@@ -118,6 +118,14 @@ def get_channel_name(id):
 	if DEBUG and EXTREME_DEBUG: pprint(response_to_json(response))
 	return response_to_json(response)['channel']['name']
 
+# get group name from identifier
+def get_group_name(id):
+	url = API+'/groups.info'
+	data = {'token': TOKEN, 'channel': id }
+	response = requests.post(url, data=data)
+	if DEBUG and EXTREME_DEBUG: pprint(response_to_json(response))
+	return response_to_json(response)['group']['name']
+
 # get user name from identifier
 def get_user_name(id):
 	url = API+'/users.info'
@@ -168,7 +176,13 @@ if __name__ == '__main__':
 				filename = f['name']
 				date = str(f['timestamp'])
 				user = users.get(f['user'], get_user_name(f['user']))
+				if len(f['channels']) > 0:
 					channel = get_channel_name(f['channels'][0])
+				elif len(f['groups']) > 0:
+					channel = get_group_name(f['groups'][0])
+				else:
+					print "No channel/group for file", f['id']
+					continue
 				file_url = f["url_private_download"]
 				basedir = OUTPUTDIR+'/'+channel
 				local_filename = get_local_filename(basedir, date, filename, user)
@@ -177,6 +191,7 @@ if __name__ == '__main__':
 				if ts == None or float(date) > float(ts): ts = date
 			except Exception, e:
 				if DEBUG: print str(e)
+				else: print "Problem during download of file", f['id']
 				pass
 		page = page + 1
 	if ts != None: set_timestamp(int(ts)+1)
