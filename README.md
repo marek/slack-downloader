@@ -47,6 +47,10 @@ This project is a fork of [marek/fslack](https://github.com/marek/fslack), used 
 5. Hit `:q` to close, saving the file
 6. Enjoy!
 
+### Supporters ###
+
+ * (https://github.com/nalt)[nalt] for the fix on file downloads
+
 ### Contacts ###
 
 You can find me on Twitter as [@auino](https://twitter.com/auino).
