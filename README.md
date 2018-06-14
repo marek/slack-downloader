@@ -49,6 +49,7 @@ This project is a fork of [marek/fslack](https://github.com/marek/fslack), used 
 
 ### Supporters ###
 
+ * [kylevedder](https://github.com/kylevedder) for multiple fixes
  * [nalt](https://github.com/nalt) for the fix on file downloads
 
 ### Contacts ###
