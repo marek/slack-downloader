@@ -49,7 +49,7 @@ This project is a fork of [marek/fslack](https://github.com/marek/fslack), used 
 
 ### Supporters ###
 
- * (https://github.com/nalt)[nalt] for the fix on file downloads
+ * [nalt](https://github.com/nalt) for the fix on file downloads
 
 ### Contacts ###
 
