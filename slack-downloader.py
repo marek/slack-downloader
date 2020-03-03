@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # 
 # slack-downloader
@@ -26,8 +26,7 @@ from pprint import pprint # for debugging purposes
 TOKEN = "<your_token>"
 
 # Set Token from environment variable SLACK_TOKEN (if it exists)
-if 'SLACK_TOKEN' in os.environ:
-	TOKEN = os.environ['SLACK_TOKEN']
+if 'SLACK_TOKEN' in os.environ: TOKEN = os.environ['SLACK_TOKEN']
 
 # output main directory, without slashes
 OUTPUTDIR = "data"
@@ -78,8 +77,8 @@ def set_timestamp(ts):
 		out_file.write(str(ts))
 		out_file.close()
 		return True
-	except Exception, e:
-		if DEBUG: print str(e)
+	except Exception as e:
+		if DEBUG: print(str(e))
 		return False
 
 # get saved timestamp of last download
@@ -89,8 +88,8 @@ def get_timestamp():
 		text = in_file.read()
 		in_file.close()
 		return int(text)
-	except Exception, e:
-		if DEBUG: print str(e)
+	except Exception as e:
+		if DEBUG: print(str(e))
 		set_timestamp(0)
 		return None
 
@@ -101,7 +100,7 @@ def download_file(url, local_filename, basedir):
 	except:
 		os.mkdir(basedir)
 	try:
-		print "Saving to", local_filename
+		print("Saving to", local_filename)
 		headers = {'Authorization': 'Bearer '+TOKEN}
 		r = requests.get(url, headers=headers)
 		with open(local_filename, 'wb') as f:
@@ -166,9 +165,12 @@ if __name__ == '__main__':
 	ts = None
 	while True:
 		json = file_requester(page)
-		if not json['ok']: print('Error', json['error'])
+		if not json['ok']:
+			print('Error', json['error'])
+			sys.exit(0)
+		print(json)
 		fileCount = len(json['files'])
-		#print 'Found', fileCount, 'files in total'
+		#print('Found', fileCount, 'files in total')
 		if fileCount == 0: break
 		for f in json["files"]:
 			try:
@@ -181,17 +183,17 @@ if __name__ == '__main__':
 				elif len(f['groups']) > 0:
 					channel = get_group_name(f['groups'][0])
 				else:
-					print "No channel/group for file", f['id']
+					print("No channel/group for file", f['id'])
 					continue
 				file_url = f["url_private_download"]
 				basedir = OUTPUTDIR+'/'+channel
 				local_filename = get_local_filename(basedir, date, filename, user)
-				print "Downloading file '"+str(file_url)+"'"
+				print("Downloading file '"+str(file_url)+"'")
 				download_file(file_url, local_filename, basedir)
 				if ts == None or float(date) > float(ts): ts = date
-			except Exception, e:
-				if DEBUG: print str(e)
-				else: print "Problem during download of file", f['id']
+			except Exception as e:
+				if DEBUG: print(str(e))
+				else: print("Problem during download of file", f['id'])
 				pass
 		page = page + 1
 	if ts != None: set_timestamp(int(ts)+1)
